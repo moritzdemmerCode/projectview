@@ -1,0 +1,18 @@
+version: "3"
+services:
+  server:
+    build: ./server
+    container_name: chatserver
+    ports:
+      - 8123:8123
+    environment:
+      - REACT_APP_HOST=0.0.0.0
+      - REACT_APP_PORT=8123
+  client:
+    build: ./public
+    container_name: chatclient
+    ports:
+      - 3000:3000
+    environment:
+      - REACT_APP_HOST=http://localhost
+      - REACT_APP_PORT=8123
